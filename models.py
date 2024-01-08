@@ -27,6 +27,7 @@ class Gemini():
                 'parts': [question]
             }
         )
+
         response = model.generate_content(self.messages)
         result = response.text
         self.messages.append(

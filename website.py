@@ -9,5 +9,4 @@ def index():
 @website.route('/chat/<conversation_id>', methods=['GET', 'POST'])
 @website.route('/chat', methods=['GET', 'POST'])
 def chat(conversation_id=None):
-
     return render_template('index.html')
