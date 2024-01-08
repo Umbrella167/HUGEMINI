@@ -4,20 +4,30 @@ const result = document.getElementById(`result`);
 
 var chatHistory = [];
 $(document).ready(function() {
+    var requestInProgress = false; // 定义请求状态变量
     $('#test_form').submit(function(event) {
-        event.preventDefault(); // 阻止表单默认提交行为
-        var inputContent = $('#input_text').val(); // 获取输入框内容
+        event.preventDefault();
+        if (requestInProgress) { // 如果当前请求正在进行，则不进行新的请求
+            return;
+        }
+        var inputContent = $('#input_text').val();
         chatHistory.push(inputContent);
-        chatHistory = chatHistory.slice(-10);
+        if (chatHistory.length > 10) {
+            chatHistory.splice(0, 2); // 删除最前面的两条记录
+        }
+        requestInProgress = true;  // 设置请求状态为进行中
         $.ajax({
             url: "/gemini/text",
             type: "POST",
-            contentType: "application/json", // 显式设置请求内容的类型为 JSON
-            data: JSON.stringify({question: inputContent, history: chatHistory}), // 将请求数据序列化为 JSON 字符串
-            dataType: "json", // 指定预期响应的类型为 JSON
+            contentType: "application/json",
+            data: JSON.stringify({question: inputContent, history: chatHistory}),
+            dataType: "json",
             success: function(response) {
                 $('#result').text(response['result']);
                 chatHistory.push(response['result']);
+            },
+            complete: function() {
+                requestInProgress = false;  // 设置请求状态为完成
             }
         });
     });

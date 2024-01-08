@@ -12,16 +12,22 @@ backend = Blueprint('backend', __name__)
 def text():
     if request.content_type == 'application/json':
         data = request.get_json(silent=True)  # 设置silent=True则不会抛出错误
+        result = ""
         if data and 'question' in data and 'history' in data:
             question = data['question']
             history = data['history']
             history_processed = history_factory(history)
             print(question, history_processed)
-            api_key = choice(GEMINI_API_KEY)
-            m = Gemini(api_key)
-            result = m.gemini_pro(history_processed)
-            print("*"*10,"\n",result)
-            return jsonify({'result': result}), 200
+            try:
+                api_key = choice(GEMINI_API_KEY)
+                m = Gemini(api_key)
+                result = m.gemini_pro(history_processed)
+                return jsonify({'result': result}), 200
+            except Exception as e:
+                traceback.print_exc()
+                result = '出错了，请刷新网页！'
+                return jsonify({'result': result}), 200
+
         else:
             return jsonify({'message': 'Invalid JSON or missing question/history keys'}), 400
     else:
@@ -41,4 +47,5 @@ def history_factory(history):
             history_dictionary.append({'role': 'model', 'parts': [history[i]]})
         else:
             history_dictionary.append({'role': 'user', 'parts': [history[i]]})
+    history_dictionary[-1]['role'] = 'user'
     return history_dictionary
