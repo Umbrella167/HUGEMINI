@@ -3,6 +3,13 @@ import PIL.Image
 
 class Gemini():
     # 初始化模型
+    """
+    A class that makes it easy to call the Gemini API
+
+    Instantiation parameters: API_KEY
+
+    """
+
     def __init__(self, API_KEY):
         genai.configure(api_key=API_KEY)
         # 检查是否连接成功
@@ -19,12 +26,23 @@ class Gemini():
             print("Can't connect to Gemini Please check your Proxy and API Key!!!")
     # 文字处理
     def gemini_pro(self, question):
+        """
+        :param question: Chat History
+        :return: AI Answer
+        :description: Enter text to get answers from the Gemini model, allowing for continuous conversations
+        """
         model = genai.GenerativeModel('gemini-pro')
         response = model.generate_content(question)
         result = response.text
         return result
     # 图片处理
     def gemini_pro_vision(self, img_path, question):
+        """
+        :param question: Chat History
+        :return: AI Answer
+        :description: Enter text and pictures to get answers from
+        the Gemini model, which does not allow continuous conversations
+        """
         model = genai.GenerativeModel('gemini-pro-vision')
         true_question = [question]
         for path in img_path:
