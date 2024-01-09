@@ -1,17 +1,47 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="UTF-8">
-    <title>HUGEMINI</title>
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script src="static/js/chat.js"></script>
-</head>
-<body>
-    <h2>提交测试</h2>
-    <form id="test_form">
-        <input type="text" id="input_text" name="text" placeholder="输入内容" required>
-        <button type="submit">提交</button>
-    </form>
-    <div id="result"></div>
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <title>HUGEMINI</title>
+{#        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>#}
+        <script src="{{ url_for('static',filename='js/chat.v2.js') }}"></script>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/index.css') }}">
+    </head>
+    <body background="{{ url_for('static',filename='img/background.jpg') }}">
+
+
+        <div class="header">
+            <h2>这是标题</h2>
+            <p>公告：</p>
+        </div>
+
+        <div class="chat-box">
+            <div class="msg-box">
+                <div class="chat" id="bot">
+                    <div>bot:</div>
+                    <div>sadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasd</div>
+                </div>
+                <div class="chat" id="user">
+                    <div>user:</div>
+                    <div>sadasdasdsadasdasd</div>
+                </div>
+            </div>
+
+
+            <form class="post-form" id="post_form">
+                <div class="input-box">
+                    <div class="tools-box">
+                        <div class="tool" id="upload_img_tool"></div>
+                        <div class="tool" id="tool2"></div>
+                        <div class="tool" id="clear_tool"></div>
+                    </div>
+
+                    <input type="text" class="input-text" id="input_text" required></input>
+                    <button type="submit" hidden></button>
+                </div>
+            </form>
+{#            <div id="result"></div>#}
+        </div>
+        <div class="footer">2024.1.9 @TnTeQAQ@Umbrella167</div>
+    </body>
 </html>

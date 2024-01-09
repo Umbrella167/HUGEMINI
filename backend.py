@@ -11,7 +11,7 @@ backend = Blueprint('backend', __name__)
 @backend.route('/text', methods=['POST'])
 def text():
     if request.content_type == 'application/json':
-        data = request.get_json(silent=True)  # 设置silent=True则不会抛出错误
+        data = request.get_json(silent=True)
         result = ""
         if data and 'question' in data and 'history' in data:
             question = data['question']
@@ -27,7 +27,6 @@ def text():
                 traceback.print_exc()
                 result = '出错了，请刷新网页！'
                 return jsonify({'result': result}), 200
-
         else:
             return jsonify({'message': 'Invalid JSON or missing question/history keys'}), 400
     else:

@@ -1,0 +1,88 @@
+html,body{
+    height: 100%;
+    color: #FFFFFF;
+    margin: 0;
+    padding: 0;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100% 100%;
+}
+
+div{
+    margin: auto;
+    text-align: center;
+}
+h2{
+    height: 40px;
+    line-height: 40px;
+}
+
+.header{
+    max-width: 1000px;
+    min-height: 100px;
+}
+
+.chat-box{
+    max-width: 1000px;
+    min-height: 600px;
+    border-radius: 5px;
+    backdrop-filter: blur(5px);
+    background-color: rgba(0,0,0,0.6);
+}
+
+.msg-box{
+    width: 90%;
+    min-height: 500px;
+    padding: 20px;
+}
+.chat{
+    width: 95%;
+    min-height: 60px;
+    margin-top: 10px;
+    border: 1px solid black;
+    word-wrap: break-word;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+}
+.chat div{
+    margin-left: 5px;
+    text-align: left;
+}
+
+.input-box{
+    width: 90%;
+    border-radius: 5px;
+}
+.tools-box{
+    width: 95%;
+    height: 30px;
+}
+.tool{
+    width: 25px;
+    height: 25px;
+    float: left;
+    margin-left: 10px;
+    border: 1px solid black;
+}
+.tool:first-child{
+    margin-left: 0px;
+}
+#clear_tool{
+    float: right;
+}
+
+.input-text{
+    width: 95%;
+    height: 50px;
+    border-radius: 5px;
+}
+.input-text{
+    width: 95%;
+    height: 50px;
+    border-radius: 5px;
+}
+
+.footer{
+    max-width: 1000px;
+    height: 100px;
+}

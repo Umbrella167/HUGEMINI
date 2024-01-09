@@ -14,14 +14,14 @@ class Gemini():
         genai.configure(api_key=API_KEY)
         # 检查是否连接成功
         try:
-            models_name = ''
-            for m in genai.list_models():
-                if 'generateContent' in m.supported_generation_methods:
-                    models_name = models_name + m.name[7:] + ' , '
-            print("Models Name: {}".format(models_name[:-2]))
-            print("Connect Successfully!")
+            # models_name = ''
+            # for m in genai.list_models():
+            #     if 'generateContent' in m.supported_generation_methods:
+            #         models_name = models_name + m.name[7:] + ' , '
+            # print("Models Name: {}".format(models_name[:-2]))
             self.model_pro = genai.GenerativeModel('gemini-pro')
             self.model_vision = genai.GenerativeModel('gemini-pro-vision')
+            print("Connect Successfully!")
         except:
             print("Can't connect to Gemini Please check your Proxy and API Key!!!")
     # 文字处理

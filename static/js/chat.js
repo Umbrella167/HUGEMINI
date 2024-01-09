@@ -1,33 +1,32 @@
-const test_form = document.getElementById(`test_form`);
-const input_text = document.getElementById(`input_text`);
-const result = document.getElementById(`result`);
+let chat_history = [];
 
-var chatHistory = [];
 $(document).ready(function() {
-    var requestInProgress = false; // 定义请求状态变量
-    $('#test_form').submit(function(event) {
+    let post_form = document.getElementById('post_form');
+
+    let request_in_progress = false; // 定义请求状态变量
+    $('#post_form').submit(function(event) {
         event.preventDefault();
-        if (requestInProgress) { // 如果当前请求正在进行，则不进行新的请求
+        if (request_in_progress) { // 如果当前请求正在进行，则不进行新的请求
             return;
         }
-        var inputContent = $('#input_text').val();
-        chatHistory.push(inputContent);
-        if (chatHistory.length > 10) {
-            chatHistory.splice(0, 2); // 删除最前面的两条记录
+        let input_text = $('#input_text').val();
+        chat_history.push(input_text);
+        if (chat_history.length > 10) {
+            chat_history.splice(0, 2); // 删除最前面的两条记录
         }
-        requestInProgress = true;  // 设置请求状态为进行中
+        request_in_progress = true;  // 设置请求状态为进行中
         $.ajax({
             url: "/gemini/text",
             type: "POST",
             contentType: "application/json",
-            data: JSON.stringify({question: inputContent, history: chatHistory}),
+            data: JSON.stringify({question: post_form, history: chat_history}),
             dataType: "json",
             success: function(response) {
                 $('#result').text(response['result']);
-                chatHistory.push(response['result']);
+                chat_history.push(response['result']);
             },
             complete: function() {
-                requestInProgress = false;  // 设置请求状态为完成
+                request_in_progress = false;  // 设置请求状态为完成
             }
         });
     });
