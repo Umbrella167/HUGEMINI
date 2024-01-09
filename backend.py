@@ -25,7 +25,7 @@ def text():
                 return jsonify({'result': result}), 200
             except Exception as e:
                 traceback.print_exc()
-                result = '出错了，请刷新网页！'
+                result = 'Something Wrong!'
                 return jsonify({'result': result}), 200
         else:
             return jsonify({'message': 'Invalid JSON or missing question/history keys'}), 400

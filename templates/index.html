@@ -11,37 +11,47 @@
 
 
         <div class="header">
-            <h2>这是标题</h2>
-            <p>公告：</p>
+            <h2>HUGEMINI</h2>
+{#            <p>公告：</p>#}
         </div>
 
         <div class="chat-box">
-            <div class="msg-box">
-                <div class="chat" id="bot">
-                    <div>bot:</div>
-                    <div>sadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasd</div>
-                </div>
-                <div class="chat" id="user">
-                    <div>user:</div>
-                    <div>sadasdasdsadasdasd</div>
-                </div>
+            <div class="msg-box" id="msg_box">
+{#                <div class="chat" id="bot">#}
+{#                    bot:#}
+{#                    <div>sadasdasdsadasdasd</div>#}
+{#                </div>#}
+{#                <div class="chat" id="user">#}
+{#                    user:#}
+{#                    <div>sadasdasdsadasdasd</div>#}
+{#                </div>#}
             </div>
 
 
             <form class="post-form" id="post_form">
                 <div class="input-box">
                     <div class="tools-box">
-                        <div class="tool" id="upload_img_tool"></div>
-                        <div class="tool" id="tool2"></div>
-                        <div class="tool" id="clear_tool"></div>
+                        <div class="tool" id="upload_img_tool">
+                            <div class="tool-img" title="上传图片">
+                                <svg t="1704791263524" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="43752" width="200" height="200"><path d="M960.2 751.5H868v-92.7h-46.4v92.7h-92.2V798h92.2v91.6H868V798h92.2z" fill="#bfbfbf" p-id="43753"></path><path d="M110.5 713l153.2 32.3 315.1-225.2 242.8 73.1v34.3H868V159.7H64v700.7h627.6V814H110.5V713z m711.1-506.8v338.5l-251.3-75.6-317 226.6-142.8-30.1V206.2h711.1z" fill="#bfbfbf" p-id="43754"></path><path d="M308.3 510.8c65.9 0 119.6-53.7 119.6-119.6 0-65.9-53.7-119.6-119.6-119.6-65.9 0-119.6 53.7-119.6 119.6 0 65.9 53.7 119.6 119.6 119.6z m0-192.8c40.3 0 73.1 32.8 73.1 73.1s-32.8 73.2-73.1 73.2-73.1-32.8-73.1-73.2S268 318 308.3 318z" fill="#bfbfbf" p-id="43755"></path></svg>
+                            </div>
+                            <div class="img-box" id="img_box" hidden></div>
+                        </div>
+                        <div class="tool" id="clear_tool">
+                            <div class="tool-img" title="清除记录">
+                                <svg t="1704791168309" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="27763" width="200" height="200"><path d="M461.994667 305.92l261.504 219.392 54.826666-65.365333-261.461333-219.392-54.869333 65.365333z m54.869333-65.365333l261.461333 219.392-54.826666 65.365333-261.504-219.392 54.869333-65.365333z" fill="#bfbfbf" p-id="27764"></path><path d="M380.501333 746.666667h155.178667l216.32-260.821334-200.106667-169.813333-279.893333 337.28L380.501333 746.666667z m268.714667 0H874.666667v85.333333H347.178667L149.333333 664.149333 541.141333 192l333.525334 282.965333-225.450667 271.701334z" fill="#bfbfbf" p-id="27765"></path></svg>
+                            </div>
+                        </div>
                     </div>
-
-                    <input type="text" class="input-text" id="input_text" required></input>
+                    <textarea type="text" class="input-text" id="input_text" required></textarea>
                     <button type="submit" hidden></button>
                 </div>
             </form>
-{#            <div id="result"></div>#}
+            <div id="result" hidden></div>
         </div>
-        <div class="footer">2024.1.9 @TnTeQAQ@Umbrella167</div>
+        <div class="footer">
+            2024.1.9
+            <a href="https://github.com/Umbrella167/HUGEMINI">@HUGEMINI</a>
+        </div>
     </body>
 </html>

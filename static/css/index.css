@@ -16,17 +16,21 @@ h2{
     height: 40px;
     line-height: 40px;
 }
+a{
+    text-decoration: none;
+    color: #666;
+}
 
 .header{
     max-width: 1000px;
-    min-height: 100px;
+    min-height: 40px;
 }
 
 .chat-box{
     max-width: 1000px;
     min-height: 600px;
     border-radius: 5px;
-    backdrop-filter: blur(5px);
+    backdrop-filter: blur(10px);
     background-color: rgba(0,0,0,0.6);
 }
 
@@ -39,33 +43,65 @@ h2{
     width: 95%;
     min-height: 60px;
     margin-top: 10px;
-    border: 1px solid black;
+    border-radius: 5px;
     word-wrap: break-word;
     background-color: rgba(255, 255, 255, 0.2);
     color: #ffffff;
+    text-align: left;
 }
 .chat div{
     margin-left: 5px;
     text-align: left;
 }
-
+@keyframes blink {
+  0% { opacity: 1; }
+  50% { opacity: 0; }
+  100% { opacity: 1; }
+}
+.typing{
+    animation: blink 1s infinite;
+}
 .input-box{
     width: 90%;
-    border-radius: 5px;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
 }
 .tools-box{
     width: 95%;
     height: 30px;
 }
 .tool{
-    width: 25px;
-    height: 25px;
+    width: 26px;
+    height: 26px;
     float: left;
     margin-left: 10px;
-    border: 1px solid black;
+    /*border: 1px solid black;*/
+    /*background-color: rgba(255, 255, 255, 0.2);*/
+}
+.tool-img{
+    width: 26px;
+    height: 26px;
+    cursor:pointer;
+}
+.tool-img:hover,
+.tool-img:active{
+    background-color: rgba(255, 255, 255, 0.2);
 }
 .tool:first-child{
-    margin-left: 0px;
+    margin-left: 0;
+}
+.img-box{
+    height: 170px;
+    width: 250px;
+    margin: -200px 2px 0px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+}
+
+.icon{
+    width: 25px;
+    height: 25px;
 }
 #clear_tool{
     float: right;
@@ -84,5 +120,7 @@ h2{
 
 .footer{
     max-width: 1000px;
-    height: 100px;
+    margin-top: 50px;
+    color: #666;
+    font-size: 15px;
 }
