@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function() {
   //创建用户消息
   function creat_user_msg_box(id, msg){
     const new_div = document.createElement("div");
-    const new_msg = document.createElement("div");
+    const new_msg = document.createElement("pre");
     new_div.id = "user"+id;
     new_div.className = "chat";
     new_div.textContent = "user:";
@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", function() {
   //创建bot消息
   function creat_bot_msg_box(id){
     const new_div = document.createElement("div");
-    const new_msg = document.createElement("div");
+    const new_msg = document.createElement("pre");
     new_div.id = "bot"+id;
     new_div.className = "chat";
     new_div.textContent = "bot:";
@@ -35,14 +35,20 @@ document.addEventListener("DOMContentLoaded", function() {
     msg_div.className = "";
     msg_div.textContent = msg;
   }
+  //清除所有消息
+  function clear_history(){
+    chat_history = [];
+    msg_box.textContent = "";
+  }
+
   //发送消息函数
   function submit_form(event) {
     event.preventDefault();
     if (request_in_progress) {
       return;
     }
-
     const input_text = textarea.value;
+    textarea.value = "";
     chat_history.push(input_text);
     if (chat_history.length > 10) {
       chat_history.splice(0, 2);
@@ -86,7 +92,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
           break;
         case "clear_tool":
-
+          clear_history();
           break;
         default:
           console.log("tools wrong!")

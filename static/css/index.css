@@ -20,6 +20,14 @@ a{
     text-decoration: none;
     color: #666;
 }
+pre{
+    margin: 0px 5px 0px;
+    font-size: 15px;
+    text-align: left;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    padding: 5px;
+}
 
 .header{
     max-width: 1000px;
@@ -33,6 +41,7 @@ a{
     backdrop-filter: blur(10px);
     background-color: rgba(0,0,0,0.6);
 }
+
 
 .msg-box{
     width: 90%;
@@ -49,10 +58,6 @@ a{
     color: #ffffff;
     text-align: left;
 }
-.chat div{
-    margin-left: 5px;
-    text-align: left;
-}
 @keyframes blink {
   0% { opacity: 1; }
   50% { opacity: 0; }
@@ -61,6 +66,7 @@ a{
 .typing{
     animation: blink 1s infinite;
 }
+
 .input-box{
     width: 90%;
     padding: 20px;
