@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Support Us</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #79e25f;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+
+        h1 {
+            text-align: center;
+            color: #444;
+        }
+
+        .image-container {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .content {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .marquee-container {
+            background-color: #79e25f;
+            border: 2px solid #070a05;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            height: 200px;
+            overflow: hidden;
+            margin: 20px auto;
+            width: 80%;
+        }
+
+        .marquee {
+            display: flex;
+            flex-direction: column;
+            animation: marquee 20s linear infinite;
+            padding: 20px;
+        }
+
+        .marquee p {
+            margin: 0;
+            padding: 10px 0;
+            background-color: #79e25f;
+            border: 1px solid #79e25f;
+            margin-bottom: 5px;
+        }
+
+        @keyframes marquee {
+            0% {
+                transform: translateY(100%);
+            }
+
+            100% {
+                transform: translateY(-100%);
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>赞助我们</h1>
+    <div class="image-container">
+        <img src="1.png" alt="赞助者墙">
+    </div>
+    <div class="content">
+        <p>请把您想说的话也放在备注里，我们看到了会一一展示</p>
+    </div>
+
+    <div class="marquee-container">
+        <div class="marquee">
+            <p>微信ID：123 赞助了 8.88元 祝愿你们越来越好</p>
+            <p>微信ID：111 赞助了 0.1元 什么垃圾玩意</p>
+            <p>微信ID：kk 赞助了 1000元 新年快乐</p>
+            <p>微信ID：nihoa 赞助了 0.1元 什么垃圾玩意</p>
+            <p>微信ID：wos 赞助了 1000元 新年快乐</p>
+            <p>微信ID：123 赞助了 8.88元 祝愿你们越来越好</p>
+            <p>微信ID：111 赞助了 0.1元 什么垃圾玩意</p>
+            <p>微信ID：kk 赞助了 1000元 新年快乐</p>
+            <p>微信ID：nihoa 赞助了 0.1元 什么垃圾玩意</p>
+            <p>微信ID：wos 赞助了 1000元 新年快乐</p>
+            <p>微信ID：123 赞助了 8.88元 祝愿你们越来越好</p>
+            <p>微信ID：111 赞助了 0.1元 什么垃圾玩意</p>
+            <p>微信ID：kk 赞助了 1000元 新年快乐</p>
+            <p>微信ID：nihoa 赞助了 0.1元 什么垃圾玩意</p>
+            <p>微信ID：wos 赞助了 1000元 新年快乐</p>
+            <!-- 更多赞助信息 -->
+        </div>
+    </div>
+
+</body>
+</html>
