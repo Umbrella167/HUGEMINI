@@ -41,9 +41,19 @@
   	`history`：消息历史（可以为空）
   	`question`：输入的问题
   返回的结果：
-  	json{
   
-  ​		`code`: 状态码,
+  ​	`code`: 状态码,
   
-  ​		`result`: 返回结果
-  ​	}
+  ​	`result`: 返回结果
+  
+- `/gemini/version`
+  methods：POST
+  function：version()
+  功能：输入图片和问题返回Gemini的回答
+  POST参数：
+  	`question`：输入的问题（可以为空）
+  	`imgs`：输入的图片json格式，包含1-多张图片
+  返回的结果：
+  	`code`: 状态码,
+
+  ​	`result`: 返回结果

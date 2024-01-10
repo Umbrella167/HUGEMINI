@@ -19,6 +19,7 @@
             <div class="msg-box" id="msg_box">
 {#                <div class="chat" id="bot">#}
 {#                    bot:#}
+{#                    <img src="{{ url_for('static',filename='img/user.jpg') }}" class="chat-img" id="chat_img">#}
 {#                    <pre>sadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasd</pre>#}
 {#                </div>#}
 {#                <div class="chat" id="user">#}
@@ -32,10 +33,19 @@
                 <div class="input-box">
                     <div class="tools-box">
                         <div class="tool" id="upload_img_tool">
-                            <div class="tool-img" title="上传图片">
+                            <div class="tool-img" id="tool_img" title="上传图片">
                                 <svg t="1704791263524" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="43752" width="200" height="200"><path d="M960.2 751.5H868v-92.7h-46.4v92.7h-92.2V798h92.2v91.6H868V798h92.2z" fill="#bfbfbf" p-id="43753"></path><path d="M110.5 713l153.2 32.3 315.1-225.2 242.8 73.1v34.3H868V159.7H64v700.7h627.6V814H110.5V713z m711.1-506.8v338.5l-251.3-75.6-317 226.6-142.8-30.1V206.2h711.1z" fill="#bfbfbf" p-id="43754"></path><path d="M308.3 510.8c65.9 0 119.6-53.7 119.6-119.6 0-65.9-53.7-119.6-119.6-119.6-65.9 0-119.6 53.7-119.6 119.6 0 65.9 53.7 119.6 119.6 119.6z m0-192.8c40.3 0 73.1 32.8 73.1 73.1s-32.8 73.2-73.1 73.2-73.1-32.8-73.1-73.2S268 318 308.3 318z" fill="#bfbfbf" p-id="43755"></path></svg>
                             </div>
-                            <div class="img-box" id="img_box" hidden></div>
+                            <div class="img-box" id="img_box" hidden>
+                                <div class="show-imgs" id="show_imgs">
+{#                                    <div class="img-block" id="img_block">#}
+{#                                        <input type="checkbox" id="img" name="img"/>#}
+{#                                        <img src="{{ url_for('static',filename='img/background.jpg') }}" id="img1data">#}
+{#                                    </div>#}
+                                </div>
+                                <input type="file" class="image-input" id="image_input" accept="image/gif,image/jpeg,image/jpg,image/png,image/svg" hidden>
+                                <div class="upload-img-btn" id="upload_img_btn">upload</div>
+                            </div>
                         </div>
                         <div class="tool" id="clear_tool">
                             <div class="tool-img" title="清除记录">
@@ -44,10 +54,9 @@
                         </div>
                     </div>
                     <textarea type="text" class="input-text" id="input_text" required></textarea>
-                    <button type="submit" hidden></button>
+{#                    <button type="submit" hidden></button>#}
                 </div>
             </form>
-            <div id="result" hidden></div>
         </div>
         <div class="footer">
             2024.1.9

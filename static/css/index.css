@@ -36,12 +36,11 @@ pre{
 
 .chat-box{
     max-width: 1000px;
-    min-height: 600px;
-    border-radius: 5px;
-    backdrop-filter: blur(10px);
+    min-height: 700px;
+    border-radius: 10px;
+    backdrop-filter: blur(15px);
     background-color: rgba(0,0,0,0.6);
 }
-
 
 .msg-box{
     width: 90%;
@@ -57,6 +56,12 @@ pre{
     background-color: rgba(255, 255, 255, 0.2);
     color: #ffffff;
     text-align: left;
+}
+.chat-img{
+    max-width: 300px;
+    max-height: 300px;
+    padding: 10px;
+    display: block;
 }
 @keyframes blink {
   0% { opacity: 1; }
@@ -101,8 +106,40 @@ pre{
     height: 170px;
     width: 250px;
     margin: -200px 2px 0px;
-    background-color: rgba(255, 255, 255, 0.2);
+    position: absolute;
+    backdrop-filter: blur(5px);
+    background-color: rgba(255, 255, 255, 0.4);
     border-radius: 8px;
+}
+.show-imgs{
+    width: 100%;
+    height: 130px;
+    border: 1px solid black;
+    overflow: auto;
+}
+.img-block{
+    width: 40px;
+    height: 40px;
+    float: left;
+    padding: 5px;
+    position:relative;
+}
+.img-block img{
+    width: 40px;
+    height: 40px;
+}
+.img-block input{
+    position: absolute;
+}
+.upload-img-btn{
+    width: 60%;
+    height: 20px;
+    margin-top: 10px;
+    border-radius: 8px;
+    border: 1px solid black;
+    font-size: 13px;
+    line-height: 20px;
+    cursor:pointer;
 }
 
 .icon{
