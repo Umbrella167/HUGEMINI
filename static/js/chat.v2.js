@@ -133,8 +133,8 @@ document.addEventListener("DOMContentLoaded", function() {
       creat_bot_msg_box_chat(chat_id++);
       window.scrollTo(0, document.documentElement.scrollHeight);
       chat_history.push(input_text);
-      if (chat_history.length > 10) {
-        chat_history.splice(0, 2);
+      if (chat_history.length > 13 * 2) {
+        chat_history.splice(3 * 2, 2);
       }
       const data = JSON.stringify({ question: input_text, imgs: img_datas });
       xhr.open("POST", url_version, true);
