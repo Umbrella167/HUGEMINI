@@ -32,7 +32,7 @@ def text():
             question = data['question']
             history = data['history']
             history_processed = history_factory(history)
-            print(question, history_processed)
+            # print(question, history_processed)
             try:
                 api_key = choice(GEMINI_API_KEY)
                 m = Gemini(api_key)

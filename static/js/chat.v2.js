@@ -7,7 +7,8 @@ document.addEventListener("DOMContentLoaded", function() {
   const image_input = document.getElementById("image_input");
   const show_imgs = document.getElementById("show_imgs");
   const upload_img_btn = document.getElementById("upload_img_btn");
-
+  const url_text = "/gemini/text";
+  const url_version = "/gemini/version";
   let chat_history = [];
   let chat_id = 0;
   let img_id = 0;
@@ -75,6 +76,9 @@ document.addEventListener("DOMContentLoaded", function() {
     img_block.append(checkbox);
     img_block.append(image);
     show_imgs.append(img_block);
+    image.addEventListener("click", function(event){
+      checkbox.checked = !checkbox.checked;
+    })
   }
   //清除所有消息
   function clear_history(){
@@ -88,8 +92,6 @@ document.addEventListener("DOMContentLoaded", function() {
       return;
     }
     const xhr = new XMLHttpRequest();
-    const url_text = "/gemini/text";
-    const url_version = "/gemini/version";
     const checked_img = document.querySelectorAll('input[type="checkbox"]:checked');
     const input_text = textarea.value;
     textarea.value = "";
@@ -112,6 +114,7 @@ document.addEventListener("DOMContentLoaded", function() {
           if (xhr.status === 200) {
             const response = JSON.parse(xhr.responseText);
             update_bot_msg_box_chat(response.result);
+            window.scrollTo(0, document.documentElement.scrollHeight);
             chat_history.push(response.result);
           }
           request_in_progress = false;
@@ -141,6 +144,7 @@ document.addEventListener("DOMContentLoaded", function() {
           if (xhr.status === 200) {
             const response = JSON.parse(xhr.responseText);
             update_bot_msg_box_chat(response.result);
+            window.scrollTo(0, document.documentElement.scrollHeight);
             chat_history.push(response.result);
           }
           request_in_progress = false;
