@@ -6,8 +6,9 @@
 {#        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>#}
         <script src="{{ url_for('static',filename='js/chat.v2.js') }}"></script>
         <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/index.css') }}">
+        <link rel="icon" href="{{ url_for('static',filename='img/logo.ico') }}">
     </head>
-    <body background="{{ url_for('static',filename='img/background.jpg') }}">
+    <body background="{{ url_for('static',filename='img/background3.jpg') }}">
 
 
         <div class="header">
@@ -56,6 +57,7 @@
                     <textarea type="text" class="input-text" id="input_text" required></textarea>
 {#                    <button type="submit" hidden></button>#}
                 </div>
+                <div class="placeholding"></div>
             </form>
         </div>
         <div class="footer">
