@@ -69,7 +69,11 @@ class Gemini():
             #     if 'generateContent' in m.supported_generation_methods:
             #         models_name = models_name + m.name[7:] + ' , '
             # print("Models Name: {}".format(models_name[:-2]))
-            self.model_pro = genai.GenerativeModel('gemini-pro', safety_settings={'HARASSMENT': 'block_none'})
+            self.model_pro = genai.GenerativeModel(
+                model_name="gemini-pro",
+                generation_config=GENERATION_CONFIG,
+                safety_settings=SAFETY_SETTINGS
+            )
             self.model_vision = genai.GenerativeModel('gemini-pro-vision')
             print("Connect Successfully!")
         except:
@@ -83,20 +87,16 @@ class Gemini():
         :description: Enter text to get answers from the Gemini model, allowing for continuous conversations
         """
         history_processed = history_factory(history)
-        model = genai.GenerativeModel(model_name="gemini-pro",
-                                      generation_config=GENERATION_CONFIG,
-                                      safety_settings=SAFETY_SETTINGS)
-        response = model.generate_content(history_processed)
+        response = self.model_pro.generate_content(history_processed)
         result = response.text
         return result
 
     # 图片处理
     def gemini_pro_vision(self, question, imgs):
-        model = genai.GenerativeModel('gemini-pro-vision')
         true_question = [question]
         for img in imgs:
             true_question.append(bs64_to_PIL(img))
-        response = model.generate_content(true_question, stream=True)
+        response = self.model_vision.generate_content(true_question, stream=True)
         response.resolve()
         return response.text
 
