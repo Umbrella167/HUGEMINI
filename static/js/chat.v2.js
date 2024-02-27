@@ -7,12 +7,15 @@ document.addEventListener("DOMContentLoaded", function() {
   const image_input = document.getElementById("image_input");
   const show_imgs = document.getElementById("show_imgs");
   const upload_img_btn = document.getElementById("upload_img_btn");
-  const url_text = "/gemini/text";
-  const url_version = "/gemini/version";
+  const select_models_box = document.getElementById("select_models_box");
+  const url_text = "/model/text";
+  const url_version = "/model/version";
+  const url_models_name = "/model/models_name";
   let chat_history = [];
   let chat_id = 0;
   let img_id = 0;
   let request_in_progress = false;
+  let model_name = "gemini";
   //创建用户消息(文字)
   function creat_user_msg_box_chat(id, msg){
     const new_div = document.createElement("div");
@@ -48,7 +51,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const new_msg = document.createElement("pre");
     new_div.id = "bot"+id;
     new_div.className = "chat";
-    new_div.textContent = "bot:";
+    new_div.textContent = `${model_name}:`;
     new_msg.className = "typing";
     new_msg.textContent = "|";
     new_div.appendChild(new_msg);
@@ -94,6 +97,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const xhr = new XMLHttpRequest();
     const checked_img = document.querySelectorAll('input[type="checkbox"]:checked');
     const input_text = textarea.value;
+    model_name = select_models_box.options[select_models_box.selectedIndex].value;
     textarea.value = "";
     request_in_progress = true;
 
@@ -106,7 +110,7 @@ document.addEventListener("DOMContentLoaded", function() {
       if (chat_history.length > 10) {
         chat_history.splice(0, 2);
       }
-      const data = JSON.stringify({ question: input_text, history: chat_history });
+      const data = JSON.stringify({ question: input_text, history: chat_history, model_name: model_name });
       xhr.open("POST", url_text, true);
       xhr.setRequestHeader("Content-Type", "application/json");
       xhr.onreadystatechange = function() {
@@ -136,7 +140,7 @@ document.addEventListener("DOMContentLoaded", function() {
       if (chat_history.length > 13 * 2) {
         chat_history.splice(3 * 2, 2);
       }
-      const data = JSON.stringify({ question: input_text, imgs: img_datas });
+      const data = JSON.stringify({ question: input_text, imgs: img_datas, model_name: model_name });
       xhr.open("POST", url_version, true);
       xhr.setRequestHeader("Content-Type", "application/json");
       xhr.onreadystatechange = function() {
@@ -153,6 +157,31 @@ document.addEventListener("DOMContentLoaded", function() {
       xhr.send(data);
     }
   }
+  //创建option框
+  function create_option(model_name){
+    const option = document.createElement('option');
+    option.value = model_name;
+    option.innerText = model_name;
+    select_models_box.appendChild(option);
+  }
+  //初始化选框
+  function init_select_options() {
+    const xhr = new XMLHttpRequest();
+    xhr.open("GET", url_models_name, true);
+    xhr.onreadystatechange = function() {
+      if (xhr.readyState === XMLHttpRequest.DONE) {
+        if (xhr.status === 200) {
+          const response = JSON.parse(xhr.responseText);
+          response.forEach((model_name) => {
+            create_option(model_name);
+          });
+        }
+      }
+    };
+    xhr.send();
+  }
+  init_select_options();
+
   //发送消息监听
   textarea.addEventListener("keydown", function(event) {
     if (event.keyCode === 13 && !event.shiftKey) {
@@ -193,11 +222,11 @@ document.addEventListener("DOMContentLoaded", function() {
               }
             }
           }
-
-
           break;
         case "clear_tool":
           clear_history();
+          break;
+        case "select_models_tool":
           break;
         default:
           console.log("tools wrong!")
@@ -216,5 +245,4 @@ document.addEventListener("click", function(event) {
   if (!tool_img.contains(event.target) && !img_box.contains(event.target)) {
     img_box.style.display = "";
   }
-
 });

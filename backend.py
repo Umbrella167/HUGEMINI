@@ -1,8 +1,6 @@
 from flask import Blueprint, request, jsonify
 import traceback
-from models import Gemini
-from config import GEMINI_API_KEY
-from random import choice
+from models.modelUtils import Models, MODELS_DIC
 
 backend = Blueprint('backend', __name__)
 
@@ -10,15 +8,15 @@ backend = Blueprint('backend', __name__)
 def text():
     if request.content_type == 'application/json':
         data = request.get_json(silent=True)
-        if data and 'question' in data and 'history' in data:
+        if data and ('question' in data) and ('history' in data) and ('model_name' in data):
             history = data['history']
+            model_name = data['model_name']
             print(history)
             try:
-                api_key = choice(GEMINI_API_KEY)
-                m = Gemini(api_key)
-                result = m.gemini_pro(history)
+                m = Models(model_name)
+                result = m.text(history)
                 return jsonify({'result': result}), 200
-            except Exception as e:
+            except:
                 traceback.print_exc()
                 result = 'Something Wrong!'
                 return jsonify({'result': result}), 200
@@ -31,15 +29,15 @@ def text():
 def version():
     if request.content_type == 'application/json':
         data = request.get_json(silent=True)
-        if data and 'question' in data and 'imgs' in data:
+        if data and ('question' in data) and ('imgs' in data) and ('model_name' in data):
             question = data['question']
             imgs = data['imgs']
+            model_name = data['model_name']
             try:
-                api_key = choice(GEMINI_API_KEY)
-                m = Gemini(api_key)
-                result = m.gemini_pro_vision(question, imgs)
+                m = Models(model_name)
+                result = m.vision(question, imgs)
                 return jsonify({'result': result}), 200
-            except Exception as e:
+            except:
                 traceback.print_exc()
                 result = 'Something Wrong!'
                 return jsonify({'result': result}), 200
@@ -48,3 +46,6 @@ def version():
     else:
         return jsonify({'message': 'Content-Type must be application/json'}), 415
 
+@backend.route('/models_name', methods=['GET'])
+def models_name():
+    return jsonify(list(MODELS_DIC.keys()))

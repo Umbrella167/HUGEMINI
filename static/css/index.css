@@ -147,6 +147,29 @@ pre{
     width: 25px;
     height: 25px;
 }
+#select_models_tool{
+    min-width: 60px;
+    float: right;
+    margin-right: 20px;
+}
+
+select {
+    background: transparent;
+    border: 1px solid #fff;
+    box-sizing: border-box;
+    border-radius: 5px;
+    text-align: center;
+    color: #fff;
+}
+select option {
+    background: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+}
+select option:checked {
+    color: #fff;
+    background: rgb(0, 0, 0);
+}
+
 #clear_tool{
     float: right;
 }
