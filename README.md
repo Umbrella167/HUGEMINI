@@ -4,6 +4,10 @@
 
 该项目是对Gemini提供的API创建的web服务，可以通过web界面来更方便地使用Gemini模型。
 
+## 项目预览
+
+![image-20240228085931761](./README/image-20240228085931761.png)
+
 ## 命名规则
 
 - python
@@ -26,7 +30,7 @@
   methods：GET、POST
   function：chat()
   功能：新建对话界面
-- `/chat/<conversation_id>`
+- `/chat/<conversation_id>` （未使用）
   methods：GET、POST
   function：chat()
   功能：指定conversation_id的对话界面
@@ -57,3 +61,10 @@
   	`code`: 状态码,
 
   ​	`result`: 返回结果
+  
+- /models_name
+  methods：GET
+  function：models_name()
+  功能：返回可使用的ai模型
+
+  
