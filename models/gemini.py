@@ -51,18 +51,18 @@ class Gemini():
     def __init__(self):
         api_key = choice(GEMINI_API_KEY)
         genai.configure(api_key=api_key)
-        # 打印可用模型
+        # # 打印可用模型
         # for m in genai.list_models():
         #     if 'generateContent' in m.supported_generation_methods:
         #         print(m.name)
         # 检查是否连接成功
         try:
             self.model_pro = genai.GenerativeModel(
-                model_name='models/gemini-1.0-pro-latest',
+                model_name='gemini-2.0-flash-exp',
                 generation_config=GENERATION_CONFIG,
                 safety_settings=SAFETY_SETTINGS
             )
-            self.model_vision = genai.GenerativeModel('models/gemini-1.0-pro-vision-latest')
+            self.model_vision = genai.GenerativeModel('gemini-2.0-flash-exp')
             print("Connect Successfully!")
         except:
             print("Can't connect to Gemini Please check your Proxy and API Key!!!")

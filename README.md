@@ -8,6 +8,12 @@
 
 ![image-20240228085931761](./README/image-20240228085931761.png)
 
+## 启动项目
+
+```
+flask run --host=0.0.0.0 --port=6666
+```
+
 ## 命名规则
 
 - python
@@ -67,4 +73,3 @@
   function：models_name()
   功能：返回可使用的ai模型
 
-  
